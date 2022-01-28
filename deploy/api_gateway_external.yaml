@@ -1,0 +1,43 @@
+# web-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-external
+spec:
+  ports:
+    - name: host1
+      port: 80
+      protocol: TCP
+      targetPort: 9376
+  selector:
+    #type: Ingress-Internal
+    test: service
+---
+kind: Gateway
+apiVersion: networking.x-k8s.io/v1alpha1
+metadata:
+  name: api-gw-external-gateway
+spec:
+  gatewayClassName: gke-l7-gxlb
+  listeners:
+    - protocol: HTTP
+      port: 80
+      routes:
+        kind: HTTPRoute
+        selector:
+          matchLabels:
+            gateway: api-gw-external-gateway
+---
+kind: HTTPRoute
+apiVersion: networking.x-k8s.io/v1alpha1
+metadata:
+  name: api-gw-external-httproute
+  labels:
+    gateway: api-gw-external-gateway
+spec:
+  #  hostnames:
+  #    - "store.example.com"
+  rules:
+    - forwardTo:
+        - serviceName: api-gateway-external
+          port: 80

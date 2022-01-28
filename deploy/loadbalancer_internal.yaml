@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-internal
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"
+spec:
+  type: LoadBalancer
+  selector:
+    #serviceType: LoadBalancer-Internal
+    test: service
+  ports:
+    - port: 80
+      targetPort: 9376
+      protocol: TCP

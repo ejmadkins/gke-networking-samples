@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-external
+spec:
+  type: LoadBalancer
+  selector:
+    #serviceType: LoadBalancer-External
+    test: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-external-name
+spec:
+  type: ExternalName
+  externalName: lbexternal.com

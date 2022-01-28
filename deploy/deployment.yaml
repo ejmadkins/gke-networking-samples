@@ -1,0 +1,25 @@
+# web-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    test: service
+  name: hostname-server
+spec:
+  selector:
+    matchLabels:
+      test: service
+  minReadySeconds: 60
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        test: service
+    spec:
+      containers:
+        - image: k8s.gcr.io/serve_hostname:v1.4
+          name: hostname-server
+          ports:
+            - containerPort: 9376
+              protocol: TCP
+      terminationGracePeriodSeconds: 90

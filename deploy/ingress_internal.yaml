@@ -1,0 +1,30 @@
+# web-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-internal
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  ports:
+    - name: host1
+      port: 80
+      protocol: TCP
+      targetPort: 9376
+  selector:
+    #type: Ingress-Internal
+    test: service
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "gce-internal"
+spec:
+  defaultBackend:
+    service:
+      name: ingress-internal
+      port:
+        number: 80
