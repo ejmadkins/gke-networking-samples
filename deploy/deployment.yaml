@@ -24,23 +24,23 @@
 #               protocol: TCP
 #       terminationGracePeriodSeconds: 90
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: test-deployment
-  labels:
-    test: service
-  spec:
-    selector:
-      matchLabels:
-        test: service
-    template:
-      metadata:
-        labels:
-          test: service
-      spec:
-        containers:
-          - name: frontend
-            image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.6
-            ports:
-              - containerPort: 8080
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: test-deployment
+#   labels:
+#     test: service
+#   spec:
+#     selector:
+#       matchLabels:
+#         test: service
+#     template:
+#       metadata:
+#         labels:
+#           test: service
+#       spec:
+#         containers:
+#           - name: frontend
+#             image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.6
+#             ports:
+#               - containerPort: 8080
