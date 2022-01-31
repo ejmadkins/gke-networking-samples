@@ -12,5 +12,5 @@ spec:
     test: service
   ports:
     - port: 80
-      targetPort: 9376
+      targetPort: 8080
       protocol: TCP

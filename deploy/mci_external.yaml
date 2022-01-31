@@ -14,7 +14,7 @@ spec:
         - name: web
           protocol: TCP
           port: 80
-          targetPort: 9376
+          targetPort: 8080
 ---
 apiVersion: networking.gke.io/v1
 kind: MultiClusterIngress

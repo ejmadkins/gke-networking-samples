@@ -12,7 +12,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 9376
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Service
