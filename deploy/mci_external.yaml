@@ -1,0 +1,26 @@
+apiVersion: networking.gke.io/v1
+kind: MultiClusterService
+metadata:
+  name: mci-external
+spec:
+  template:
+    spec:
+      selector:
+        test: service
+        serviceType: MCIExternal
+      ports:
+        - name: web
+          protocol: TCP
+          port: 80
+          targetPort: 9376
+---
+apiVersion: networking.gke.io/v1
+kind: MultiClusterIngress
+metadata:
+  name: mci-external
+spec:
+  template:
+    spec:
+      backend:
+        serviceName: mci-external
+        servicePort: 80
