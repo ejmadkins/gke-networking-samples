@@ -30,17 +30,17 @@ metadata:
   name: test-deployment
   labels:
     test: service
-spec:
-  selector:
-    matchLabels:
-      test: service
-  template:
-    metadata:
-      labels:
-      test: service
-    spec:
-      containers:
-        - name: frontend
-          image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.6
-          ports:
-            - containerPort: 8080
+  spec:
+    selector:
+      matchLabels:
+        test: service
+    template:
+      metadata:
+        labels:
+          test: service
+      spec:
+        containers:
+          - name: frontend
+            image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.6
+            ports:
+              - containerPort: 8080
