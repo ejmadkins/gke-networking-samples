@@ -2,8 +2,8 @@ apiVersion: networking.gke.io/v1
 kind: MultiClusterService
 metadata:
   name: mci-external
-  annotations:
-    configmanagement.gke.io/cluster-selector: cluster-east
+  # annotations:
+  #   configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   template:
     spec:
@@ -20,8 +20,8 @@ apiVersion: networking.gke.io/v1
 kind: MultiClusterIngress
 metadata:
   name: mci-external
-  annotations:
-    configmanagement.gke.io/cluster-selector: cluster-east
+  # annotations:
+  #   configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   template:
     spec:
