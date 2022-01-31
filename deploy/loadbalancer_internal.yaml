@@ -4,6 +4,7 @@ metadata:
   name: loadbalancer-internal
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
+    configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   type: LoadBalancer
   selector:

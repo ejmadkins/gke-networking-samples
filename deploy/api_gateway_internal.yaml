@@ -3,6 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api-gateway-internal
+  annotations:
+    configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   ports:
     - name: host1
@@ -17,6 +19,8 @@ kind: Gateway
 apiVersion: networking.x-k8s.io/v1alpha1
 metadata:
   name: api-gw-internal-gateway
+  annotations:
+    configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   gatewayClassName: gke-l7-rilb
   listeners:
@@ -32,6 +36,8 @@ kind: HTTPRoute
 apiVersion: networking.x-k8s.io/v1alpha1
 metadata:
   name: api-gw-internal-httproute
+  annotations:
+    configmanagement.gke.io/cluster-selector: cluster-east
   labels:
     gateway: api-gw-internal-gateway
 spec:

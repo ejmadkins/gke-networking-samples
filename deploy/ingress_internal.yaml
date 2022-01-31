@@ -5,6 +5,7 @@ metadata:
   name: ingress-internal
   annotations:
     cloud.google.com/neg: '{"ingress": true}'
+    configmanagement.gke.io/cluster-selector: cluster-east
 spec:
   ports:
     - name: host1
